@@ -5,6 +5,7 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { createClient } from "contentful";
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { Preview } from "./Preview";
+import HomepageHero from "./HomepageHero";
 
 const client = createClient({
   space: "w89z4lbdennb",
@@ -12,7 +13,7 @@ const client = createClient({
 });
 
 const getEntries = async () => {
-  const entryItems = await client.getEntries({ content_type: "contentModel1" });
+  const entryItems = await client.getEntries();
   const entries = entryItems.items.map((entry) => {
     return { id: entry.sys.id, ...entry.fields };
   });
@@ -24,14 +25,14 @@ function App() {
   const { data, error } = useSWR("contentful", getEntries);
   if (error) return <div>failed to load </div>;
   if (!data) return <Spinner size="large" />;
+  console.log(data);
 
   return (
     <>
       <a href={"/preview"}>Go to preview</a>
       <h1>Live Page</h1>
       <hr />
-      <h2>{data.entries[0].title}</h2>
-      {documentToReactComponents(data.entries[0].text)}
+      <HomepageHero data={data.entries[0]} />
     </>
   );
 }
