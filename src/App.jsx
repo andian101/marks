@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { Spinner } from "@contentful/f36-spinner";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { Preview } from "./Preview";
 
 const client = createClient({
@@ -27,7 +27,10 @@ function App() {
 
   return (
     <>
-      <h1>{data.entries[0].title}</h1>
+      <a href={"/preview"}>Go to preview</a>
+      <h1>Live Page</h1>
+      <hr />
+      <h2>{data.entries[0].title}</h2>
       {documentToReactComponents(data.entries[0].text)}
     </>
   );

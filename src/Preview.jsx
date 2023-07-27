@@ -3,10 +3,11 @@ import useSWR from "swr";
 import { Spinner } from "@contentful/f36-spinner";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { createClient } from "contentful";
+import { Link } from "react-router-dom";
 
 const client = createClient({
   space: "w89z4lbdennb",
-  accessToken: "XuxVdITMcJzjxx0UVCNJdbPaR5_ggKG_gKobezCvPPE",
+  accessToken: "jqRJ1IbhkuYud0Pbd3eZ3SfAE9shG3uF2nb6F5fEuOM",
   host: "preview.contentful.com",
 });
 
@@ -26,7 +27,10 @@ export function Preview() {
 
   return (
     <>
-      <h1>{data.entries[0].title}</h1>
+      <a href="/">Go to live page</a>
+      <h1>Preview Page</h1>
+      <hr />
+      <h2>{data.entries[0].title}</h2>
       {documentToReactComponents(data.entries[0].text)}
     </>
   );
