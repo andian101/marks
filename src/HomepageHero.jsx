@@ -18,7 +18,6 @@ function HomepageHero({ data }) {
 
   return (
     <div className="hh">
-      <a href={"/preview"}>Go to preview</a>
       <div className="intro">{documentToReactComponents(introduction)}</div>
       <h4 />
       <section className="hh-wrap">

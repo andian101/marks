@@ -29,8 +29,9 @@ function App() {
 
   return (
     <>
-      <a href={"/preview"}>Go to preview</a>
-      <h1>Live Page</h1>
+      <p>
+        <b>Live Page</b>: <a href="/preview">Go to preview page</a>
+      </p>
       <hr />
       <HomepageHero data={data.entries[0]} />
     </>

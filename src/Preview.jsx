@@ -28,8 +28,9 @@ export function Preview() {
 
   return (
     <>
-      <a href="/">Go to live page</a>
-      <h1>Preview Page</h1>
+      <p>
+        <b>Preview Page</b>: <a href="/">Go to live page</a>
+      </p>
       <hr />
       <HomepageHero data={data.entries[0]} />
     </>
