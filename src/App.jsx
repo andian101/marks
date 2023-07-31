@@ -13,10 +13,11 @@ const client = createClient({
 });
 
 const getEntries = async () => {
-  const entryItems = await client.getEntries();
+  const entryItems = await client.getEntries({ content_type: "homepageHero" });
   const entries = entryItems.items.map((entry) => {
     return { id: entry.sys.id, ...entry.fields };
   });
+  console.log(entries);
 
   return { entries };
 };
@@ -25,7 +26,6 @@ function App() {
   const { data, error } = useSWR("contentful", getEntries);
   if (error) return <div>failed to load </div>;
   if (!data) return <Spinner size="large" />;
-  console.log(data);
 
   return (
     <>
@@ -33,7 +33,9 @@ function App() {
         <b>Live Page</b>: <a href="/preview">Go to preview page</a>
       </p>
       <hr />
-      <HomepageHero data={data.entries[0]} />
+      {data.entries.map((el) => (
+        <HomepageHero key={el.id} data={el} />
+      ))}
     </>
   );
 }

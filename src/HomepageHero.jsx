@@ -18,8 +18,8 @@ function HomepageHero({ data }) {
 
   return (
     <div className="hh">
+      <h2>{data.internalName}</h2>
       <div className="intro">{documentToReactComponents(introduction)}</div>
-      <h4 />
       <section className="hh-wrap">
         <div className="hh-left" style={{ backgroundColor: moduleColour }}>
           <h2>{mainCopy}</h2>
@@ -32,13 +32,13 @@ function HomepageHero({ data }) {
           <picture>
             <source
               media="(min-width:900px)"
-              srcSet={desktopImage.fields.file.url}
+              srcSet={desktopImage?.fields?.file?.url}
             />
             <source
               media="(min-width:0px)"
-              srcSet={mobileImage.fields.file.url}
+              srcSet={mobileImage?.fields?.file?.url}
             />
-            <img src={desktopImage.fields.file.url} alt="Flowers" />
+            <img src={desktopImage?.fields?.file?.url} alt="Flowers" />
           </picture>
         </div>
       </section>

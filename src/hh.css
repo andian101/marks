@@ -1,5 +1,13 @@
+.hh  {
+  margin-bottom: 20px;
+  border-block-start: 1px solid white;
+  padding: 20px 0;
+}
+
 .hh .intro {
   text-align: center;
+  width: 80vw;
+  margin: 0 auto;
 }
 
 .hh img {
