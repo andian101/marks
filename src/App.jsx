@@ -14,11 +14,10 @@ const client = createClient({
 
 const getEntries = async () => {
   const entryItems = await client.getEntries({ content_type: "homepageHero" });
-  const entries = entryItems.items.map((entry) => {
-    return { id: entry.sys.id, ...entry.fields };
-  });
-  console.log(entries);
-
+  const entries = entryItems.items
+    .map((entry) => ({ id: entry.sys.id, ...entry.fields }))
+    .sort((a, b) => a.internalName.localeCompare(b.internalName))
+    .reverse();
   return { entries };
 };
 
